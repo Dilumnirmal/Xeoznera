@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>XEOZNERA – About</title>
+<style>
+  /* Reset & base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    background: #000;
+    color: #0ff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-y: auto;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  /* Header */
+  header {
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #0ff4;
+  }
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+    letter-spacing: 2px;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  nav ul li a {
+    color: #0ff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+  }
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: #0ff;
+    transition: 0.3s ease;
+  }
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+  /* About content */
+  main.about {
+    flex-grow: 1;
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+  .glass-card {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid #0ff3;
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px #0ff2;
+    text-align: center;
+  }
+  .glass-card h2 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 10px #0ff;
+  }
+  .glass-card p {
+    font-size: 1.1rem;
+    color: #0ffb;
+    line-height: 1.6;
+  }
+  /* Canvas */
+  canvas#particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .glass-card h2 { font-size: 1.5rem; }
+    .glass-card p { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">XEOZNERA</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" style="text-decoration: underline;">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="downloads.html">Download</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="about">
+    <div class="glass-card">
+      <h2>About XEOZNERA</h2>
+      <p>XEOZNERA is more than a brand — it’s a digital revolution. We blend futuristic design, lightning-fast performance, and artistic freedom into one experience.</p>
+    </div>
+    <div class="glass-card">
+      <h2>Our Mission</h2>
+      <p>To create cinematic-grade software tools that empower creators across the globe. We build for editors, designers, dreamers — and anyone who sees the world differently.</p>
+    </div>
+    <div class="glass-card">
+      <h2>Why We're Legendary</h2>
+      <p>We don’t follow design trends — we create them. Every glow, every effect, every pixel... crafted with purpose.</p>
+    </div>
+  </main>
+
+  <canvas id="particles"></canvas>
+
+  <script>
+    // Particles Background same as index.html
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+    let particles = [];
+
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        a: Math.random()
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,255,255,${p.a})`;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > w) p.dx *= -1;
+        if (p.y < 0 || p.y > h) p.dy *= -1;
+      });
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+    window.addEventListener('resize', () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>

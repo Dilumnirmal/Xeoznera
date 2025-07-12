@@ -1,0 +1,105 @@
+/* style.css */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: #0ff;
+  letter-spacing: 2px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #0ff;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(180deg, #000 0%, #111 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.hero h1 span {
+  color: #0ff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  padding: 12px 28px;
+  background: #0ff;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+  background: #00f0f0;
+  transform: scale(1.05);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 100px 50px;
+  background: #111;
+}
+
+.feature {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #000;
+  color: #555;
+}
